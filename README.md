@@ -13,3 +13,9 @@ Le pack SD est proposé après le flash. Chaque utilisateur configure sa propre 
 
 Site : https://xetro-tembed-luis.purplepig8192.chatgpt.site
 Projet d’origine : https://github.com/Filip1x3/Momentum-Firmware-ESP32-Port
+
+## Navigateur Android et Windows
+
+Après un flash réussi, la dernière étape propose le pack SD, l’APK Android et l’EXE Windows. Télécharge puis ouvre l’application choisie. Le T-Embed et le téléphone ou PC doivent être sur le même Wi-Fi ; garde l’application visible ou ouverte pendant la navigation.
+
+Applications : https://github.com/luisdev240/xetro-firmware/releases/tag/navigateur-v1.0.0
