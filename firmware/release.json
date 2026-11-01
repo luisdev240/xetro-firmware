@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "name": "Momentum — Dualboot + IA",
+  "name": "Xetro — Dualboot + IA",
   "version": "2.0.0-db1",
   "board": "LilyGo T-Embed CC1101 Plus",
   "chip": "ESP32-S3",
@@ -21,10 +21,10 @@
       "sha256": "268429ace45a675313a226218af78a53f760adbc3f8c1de9b051fd2fcdf3420d"
     },
     {
-      "path": "momentum-dualboot-ia.bin",
+      "path": "xetro-dualboot-ia.bin",
       "offset": 65536,
-      "size": 3695184,
-      "sha256": "126518f2833504f6aa69ddfe37a11e5b7eea4c9866ef3bec195644c1696e81a3"
+      "size": 3698784,
+      "sha256": "cef2669d1f725e921f3e52f76a371d396f4a272d4331c77b3a47aceb512c467a"
     },
     {
       "path": "bruce-dualboot.bin",
