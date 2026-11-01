@@ -19,3 +19,7 @@ Projet d’origine : https://github.com/Filip1x3/Momentum-Firmware-ESP32-Port
 Après un flash réussi, la dernière étape propose le pack SD, l’APK Android et l’EXE Windows. Télécharge puis ouvre l’application choisie. Le T-Embed et le téléphone ou PC doivent être sur le même Wi-Fi ; garde l’application visible ou ouverte pendant la navigation.
 
 Applications : https://github.com/luisdev240/xetro-firmware/releases/tag/navigateur-v1.0.0
+
+## Explorer Xetro
+
+Modèle 3D interactif avec vue éclatée et apparences minéral/carbone, galerie des captures, installation guidée, mise en page mobile et animations respectant la réduction des mouvements.

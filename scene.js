@@ -172,6 +172,23 @@ async function start() {
   controls.minAzimuthAngle = -1.15;
   controls.maxAzimuthAngle = 1.15;
   controls.target.set(0, 0, 0);
+  const layers = device.children.map(mesh => ({
+    mesh, origin: mesh.position.clone(),
+    shift: mesh.position.z < 0 ? -.35 :
+      mesh.position.x > 1.15 && mesh.position.z > .48 ? 1.05 :
+      mesh.position.z > .54 ? .65 : .2,
+  }));
+  let exploded = stage.dataset.explodeRequested === 'true';
+  let separation = 0;
+  window.addEventListener('xetro:explode', event => { exploded = event.detail; });
+  window.addEventListener('xetro:finish', event => {
+    shellMaterial.color.setHex(event.detail === 'carbon' ? 0x202820 : 0x57604f);
+    shellMaterial.roughness = event.detail === 'carbon' ? .42 : .24;
+  });
+  if (stage.dataset.modelFinish === 'carbon') {
+    shellMaterial.color.setHex(0x202820);
+    shellMaterial.roughness = .42;
+  }
   let dragging = false;
   controls.addEventListener('start', () => { dragging = true; });
   controls.addEventListener('end', () => { dragging = false; });
@@ -199,6 +216,9 @@ async function start() {
     screenMaterial.map = texture;
     screenMaterial.needsUpdate = true;
   });
+  if (stage.dataset.screen && stage.dataset.screen !== 'menu-navigateur') {
+    window.dispatchEvent(new CustomEvent('xetro:screen', { detail: stage.dataset.screen }));
+  }
   window.addEventListener('xetro:reset', () => { controls.reset(); });
   let visible = true;
   let flasherOpen = false;
@@ -206,9 +226,23 @@ async function start() {
   new IntersectionObserver(entries => { visible = entries[0].isIntersecting; }).observe(stage);
   const started = performance.now();
   let first = true;
+  let previousFrame = 0;
   function render(now) {
     requestAnimationFrame(render);
     if (!visible || document.hidden || flasherOpen) return;
+    if (!dragging && !first && now - previousFrame < 1000 / 30) return;
+    const delta = Math.min((now - previousFrame) / 1000, .1);
+    previousFrame = now;
+    separation = reducedMotion.matches ? Number(exploded) :
+      THREE.MathUtils.damp(separation, Number(exploded), 7, delta);
+    for (const { mesh, origin, shift } of layers) {
+      mesh.position.z = origin.z + separation * shift;
+      const dial = origin.x > 1.15 && origin.z > .48;
+      const display = origin.z > .54 && !dial;
+      mesh.position.x = origin.x + separation * (dial ? .5 : display ? -.35 : 0);
+      mesh.position.y = origin.y + separation * (display ? .4 : origin.z < 0 ? -.25 : 0);
+    }
+    stage.dataset.exploded = separation > .95 ? 'true' : separation < .05 ? 'false' : 'transition';
     if (!reducedMotion.matches && !dragging) {
       const t = (now - started) / 1000;
       device.position.y = Math.sin(t * .75) * .055;
@@ -228,10 +262,12 @@ async function start() {
     stage.classList.remove('ready');
     stage.dataset.model = 'fallback';
   });
+  canvas.addEventListener('webglcontextrestored', () => { first = true; });
 }
 
 start().catch(error => {
   stage.dataset.model = 'fallback';
   document.querySelector('.model-status').textContent = 'APERÇU INTERACTIF';
+  window.dispatchEvent(new Event('xetro:model-unavailable'));
   console.warn('Le modèle WebGL est indisponible : aperçu de secours affiché.', error);
 });

@@ -133,3 +133,49 @@ document.querySelector('#reset-view').addEventListener('click', () => {
 const warmImages = () => Object.keys(captures).forEach(key => { const image = new Image(); image.src = `assets/${key}.png`; });
 if ('requestIdleCallback' in window) requestIdleCallback(warmImages);
 else setTimeout(warmImages, 1200);
+
+// Model controls change only the illustration, never the downloadable firmware.
+const explodeButton = document.querySelector('#explode-view');
+explodeButton.addEventListener('click', () => {
+  const expanded = explodeButton.getAttribute('aria-pressed') !== 'true';
+  explodeButton.setAttribute('aria-pressed', String(expanded));
+  stage.dataset.explodeRequested = String(expanded);
+  window.dispatchEvent(new CustomEvent('xetro:explode', { detail: expanded }));
+});
+document.querySelectorAll('[data-finish]').forEach(button => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('[data-finish]').forEach(item =>
+      item.setAttribute('aria-pressed', String(item === button)));
+    const carbon = button.dataset.finish === 'carbon';
+    stage.dataset.modelFinish = button.dataset.finish;
+    document.querySelector('.fallback-shell').style.background = carbon ? '#252d22' : '';
+    window.dispatchEvent(new CustomEvent('xetro:finish', { detail: button.dataset.finish }));
+  });
+});
+window.addEventListener('xetro:model-unavailable', () => {
+  explodeButton.disabled = true;
+  explodeButton.title = 'La vue éclatée nécessite WebGL.';
+});
+
+const readingProgress = document.querySelector('.reading-progress');
+let scrollPending = false;
+function updateReadingProgress() {
+  const distance = document.documentElement.scrollHeight - innerHeight;
+  readingProgress.style.transform = `scaleX(${distance > 0 ? scrollY / distance : 0})`;
+  scrollPending = false;
+}
+window.addEventListener('scroll', () => {
+  if (!scrollPending) { scrollPending = true; requestAnimationFrame(updateReadingProgress); }
+}, { passive: true });
+window.addEventListener('resize', updateReadingProgress);
+updateReadingProgress();
+
+const sectionNavigation = new IntersectionObserver(entries => {
+  const active = entries.find(entry => entry.isIntersecting);
+  if (!active) return;
+  navigation.querySelectorAll('a').forEach(link => {
+    if (link.hash === `#${active.target.id}`) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+}, { rootMargin: '-20% 0px -60% 0px' });
+document.querySelectorAll('#firmware, #experience, #installation, #questions').forEach(section => sectionNavigation.observe(section));
