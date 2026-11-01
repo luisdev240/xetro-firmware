@@ -4,7 +4,7 @@ const captures = {
   'menu-navigateur': { title: 'MENU PRINCIPAL', description: 'Des icônes personnalisées. L’essentiel à un cran de molette.', alt: 'Menu principal du firmware, avec Navigateur sélectionné.' },
   navigateur: { title: 'NAVIGATEUR PC', description: 'Les pages sur le T-Embed. Le moteur web sur ton PC.', alt: 'Écran Navigateur PC avec les commandes de navigation à la molette.' },
   'ia-chat': { title: 'IA CHAT', description: 'OK pour parler. La molette pour retrouver le fil.', alt: 'IA Chat : OK pour parler et rotation pour défiler dans le chat.' },
-  dualboot: { title: 'DUAL BOOT', description: 'Bruce ou Momentum. Les deux restent à portée de main.', alt: 'Menu Dual Boot du firmware proposant de démarrer Bruce.' },
+  dualboot: { title: 'DUAL BOOT', description: 'Bruce ou Xetro. Les deux restent à portée de main.', alt: 'Menu Dual Boot du firmware proposant de démarrer Bruce.' },
   parametres: { title: 'PARAMÈTRES / 1.4.3', description: 'L’interface, les protocoles, les détails. À ta façon.', alt: 'Paramètres du firmware 1.4.3 avec Interface, Protocols et Misc.' },
 };
 
@@ -105,7 +105,7 @@ modelButtons.forEach(button => {
     const key = button.dataset.modelScreen;
     document.querySelector('.fallback-screen img').src = `assets/${key}.png`;
     stage.dataset.screen = key;
-    window.dispatchEvent(new CustomEvent('momentum:screen', { detail: key }));
+    window.dispatchEvent(new CustomEvent('xetro:screen', { detail: key }));
   });
 });
 
@@ -126,7 +126,7 @@ stage.addEventListener('pointerup', () => { fallbackDrag = null; });
 stage.addEventListener('pointercancel', () => { fallbackDrag = null; });
 document.querySelector('#reset-view').addEventListener('click', () => {
   document.querySelector('.fallback-shell').style.transform = '';
-  window.dispatchEvent(new Event('momentum:reset'));
+  window.dispatchEvent(new Event('xetro:reset'));
 });
 
 // Warm up the real screenshots when the page is idle.

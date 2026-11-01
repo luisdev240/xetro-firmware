@@ -192,17 +192,17 @@ async function start() {
   new ResizeObserver(resize).observe(stage);
   resize();
 
-  window.addEventListener('momentum:screen', async event => {
+  window.addEventListener('xetro:screen', async event => {
     const key = event.detail;
     const texture = await screenTexture(key);
     if (stage.dataset.screen !== key) return;
     screenMaterial.map = texture;
     screenMaterial.needsUpdate = true;
   });
-  window.addEventListener('momentum:reset', () => { controls.reset(); });
+  window.addEventListener('xetro:reset', () => { controls.reset(); });
   let visible = true;
   let flasherOpen = false;
-  window.addEventListener('momentum:flasher', event => { flasherOpen = event.detail; });
+  window.addEventListener('xetro:flasher', event => { flasherOpen = event.detail; });
   new IntersectionObserver(entries => { visible = entries[0].isIntersecting; }).observe(stage);
   const started = performance.now();
   let first = true;

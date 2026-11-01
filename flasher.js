@@ -2,7 +2,7 @@ import md5 from './assets/vendor/md5.mjs';
 
 const FILES = new Map([
   ['bootloader.bin', 0], ['partition-table.bin', 0x8000],
-  ['momentum-dualboot-ia.bin', 0x10000], ['bruce-dualboot.bin', 0x600000],
+  ['xetro-dualboot-ia.bin', 0x10000], ['bruce-dualboot.bin', 0x600000],
   ['ota_data_initial.bin', 0xbf0000],
 ]);
 const PROTECTED = [[0x9000, 0x10000], [0xc12000, 0x1000000]];
@@ -122,7 +122,7 @@ export class Flasher {
 
   async open() {
     this.dialog.showModal();
-    window.dispatchEvent(new CustomEvent('momentum:flasher', { detail: true }));
+    window.dispatchEvent(new CustomEvent('xetro:flasher', { detail: true }));
     if (this.release) return;
     try {
       const response = await this.fetcher('./firmware/release.json', { cache: 'no-cache' });
@@ -258,7 +258,7 @@ export class Flasher {
     finally {
       this.busy = false;
       this.dialog.close();
-      window.dispatchEvent(new CustomEvent('momentum:flasher', { detail: false }));
+      window.dispatchEvent(new CustomEvent('xetro:flasher', { detail: false }));
       this.updateButtons();
     }
   }
