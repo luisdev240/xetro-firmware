@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "name": "Momentum — Dualboot + IA",
+  "version": "2.0.0-db1",
+  "board": "LilyGo T-Embed CC1101 Plus",
+  "chip": "ESP32-S3",
+  "flashSize": "16MB",
+  "layout": "momentum-bruce-db1",
+  "eraseAll": false,
+  "files": [
+    {
+      "path": "bootloader.bin",
+      "offset": 0,
+      "size": 20848,
+      "sha256": "ae1bd35ed91daf77654b5d4208e3a4610353fc4219764240a7a2446aad388168"
+    },
+    {
+      "path": "partition-table.bin",
+      "offset": 32768,
+      "size": 3072,
+      "sha256": "268429ace45a675313a226218af78a53f760adbc3f8c1de9b051fd2fcdf3420d"
+    },
+    {
+      "path": "momentum-dualboot-ia.bin",
+      "offset": 65536,
+      "size": 3695184,
+      "sha256": "126518f2833504f6aa69ddfe37a11e5b7eea4c9866ef3bec195644c1696e81a3"
+    },
+    {
+      "path": "bruce-dualboot.bin",
+      "offset": 6291456,
+      "size": 4196832,
+      "sha256": "8f7e8c94ddc551a369a36ff166709f25ebcb6f0d7d310e9102789d54cc04c194"
+    },
+    {
+      "path": "ota_data_initial.bin",
+      "offset": 12517376,
+      "size": 8192,
+      "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+    }
+  ],
+  "sdcard": {
+    "available": true,
+    "path": "sdcard.zip",
+    "size": 13064532,
+    "sha256": "54ffc5a47875c4f74f9c9c76465458ede0b478634158719b4fb4e6de025e14ef"
+  },
+  "groq": {
+    "embeddedKey": false,
+    "configuration": "personal-sd-card"
+  },
+  "companion": {
+    "project": "bruce_mntm_db1",
+    "version": "1.16-db1"
+  }
+}

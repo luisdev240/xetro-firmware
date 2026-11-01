@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101210">
+  <title>Momentum — Petit format. Grand terrain de jeu.</title>
+  <meta name="description" content="Découvre notre édition Momentum pour le T-Embed CC1101 Plus : dualboot avec Bruce, chat IA vocal, navigateur et une interface qui te ressemble.">
+  <meta property="og:title" content="Momentum / Édition T-Embed">
+  <meta property="og:description" content="Petit format. Grand terrain de jeu. Dualboot + IA + navigateur dans ton T-Embed.">
+  <meta property="og:url" content="https://momentum-tembed-luis.purplepig8192.chatgpt.site">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/vendor/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">{"imports":{"three":"./assets/vendor/three.module.js"}}</script>
+  <script src="app.js" defer></script>
+  <script type="module" src="scene.js"></script>
+  <script type="module" src="flasher.js"></script>
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <header class="header wrap">
+    <a class="brand" href="#" aria-label="Momentum, accueil"><svg viewBox="0 0 36 30" aria-hidden="true"><path d="M0 30V0h7l11 17L29 0h7v30h-8V14L18 29 8 14v16Z"/></svg><span>momentum<span class="brand-dot">↗</span></span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" aria-label="Ouvrir le menu"><span></span><span></span></button>
+    <nav id="navigation" aria-label="Navigation principale"><a href="#firmware">Le firmware</a><a href="#experience">En action</a><a href="#questions">Questions</a></nav>
+    <a class="nav-cta" href="https://discord.gg/cxar9AKsgW" target="_blank" rel="noopener">Rejoindre le Discord <span>↗</span></a>
+  </header>
+
+  <main id="contenu">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="live-dot"></span> ÉDITION T-EMBED CC1101 PLUS</p>
+        <h1 id="hero-title">PETIT FORMAT.<br>GRAND TERRAIN<br><span>DE JEU.</span><svg class="heading-star" viewBox="0 0 70 70" aria-hidden="true"><path d="M35 0v70M0 35h70M10 10l50 50M10 60l50-50"/></svg></h1>
+        <p class="hero-description">Ton T-Embed a plus d’un tour dans sa molette.<br>Dualboot, intelligence artificielle, navigateur.<br>Une nouvelle façon d’explorer.</p>
+        <div class="hero-actions"><button class="button primary" type="button" data-open-flasher>Flasher le firmware <span>↗</span></button><a class="text-link" href="#firmware">Ce qui change <span>↓</span></a></div>
+        <div class="hero-meta"><span>DUALBOOT + IA</span><span>INTERFACE 1.4.3</span><span class="meta-line"></span></div>
+      </div>
+      <div class="hero-visual">
+        <div class="orbit orbit-one" aria-hidden="true"></div><div class="orbit orbit-two" aria-hidden="true"></div>
+        <span class="visual-cross cross-a" aria-hidden="true">+</span><span class="visual-cross cross-b" aria-hidden="true">+</span>
+        <div class="model-label"><span>01 / EXPLORER</span><span class="model-status">MODÈLE INTERACTIF</span></div>
+        <div id="device-stage" class="device-stage">
+          <div class="device-fallback" aria-hidden="true"><div class="fallback-shell"><div class="fallback-screen"><img src="assets/menu-navigateur.png" alt=""></div><div class="fallback-dial"><span></span></div></div></div>
+          <canvas id="device-canvas" aria-label="Modèle 3D du T-Embed. Fais glisser pour le tourner."></canvas>
+        </div>
+        <div class="model-caption"><span class="drag-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 8-4 4 4 4m10-8 4 4-4 4M3 12h18"/></svg>Glisse pour tourner</span><button id="reset-view" type="button">Réinitialiser <span>↺</span></button></div>
+        <div class="screen-switcher" aria-label="Écran du modèle 3D"><button class="active" data-model-screen="menu-navigateur" aria-pressed="true">Menu</button><button data-model-screen="navigateur" aria-pressed="false">Web</button><button data-model-screen="ia-chat" aria-pressed="false">IA</button><button data-model-screen="dualboot" aria-pressed="false">Dualboot</button></div>
+        <p class="model-note">Visualisation 3D · captures réelles du firmware</p>
+      </div>
+    </section>
+
+    <div class="signal-strip"><div class="wrap strip-inner"><span><i>↻</i> TOURNE. EXPLORE.</span><span><i>●</i> CLIQUE. ESSAIE.</span><span><i>↗</i> CHANGE DE DIMENSION.</span><span class="strip-last">MOMENTUM / T-EMBED</span></div></div>
+
+    <section id="firmware" class="features wrap section-space" aria-labelledby="features-title">
+      <div class="section-heading reveal"><p class="eyebrow">[ LE FIRMWARE ]</p><div><h2 id="features-title">Même appareil.<br><span class="muted">Nouveaux possibles.</span></h2><p>Une édition personnelle de Momentum pensée pour ton T-Embed. Les outils que tu connais. Des idées en plus.</p></div></div>
+      <article class="dual-feature reveal">
+        <div class="feature-copy"><span class="feature-index">01 / DUALBOOT</span><h3>Deux univers.<br>Une seule molette.</h3><p>Momentum ou Bruce ? Garde les deux.<br>Choisis ton firmware dans le menu Dual Boot, directement depuis le T-Embed.</p><a class="text-link" href="#experience" data-select-gallery="dualboot">Voir le dualboot <span>↗</span></a></div>
+        <div class="dual-art" aria-hidden="true"><div class="dual-orbit"></div><div class="floating-tile tile-m"><svg viewBox="0 0 36 30"><path d="M0 30V0h7l11 17L29 0h7v30h-8V14L18 29 8 14v16Z"/></svg><span>MOMENTUM</span></div><span class="dual-plus">+</span><div class="floating-tile tile-b"><span class="bruce-letter">B</span><span>BRUCE</span></div><span class="dual-art-note">CHOISIS TON CÔTÉ. OU LES DEUX.</span></div>
+      </article>
+      <div class="feature-pair">
+        <article class="ia-feature reveal"><div class="feature-top"><span class="feature-index">02 / IA CHAT</span><span class="rec-pill"><i></i> MICRO</span></div><h3>Une phrase.<br>La suite des idées.</h3><p>Appuie sur OK, parle, puis appuie à nouveau pour arrêter. Le chat affiche ta phrase et la réponse de Groq. La molette te permet de parcourir la conversation.</p><div class="mini-screen"><img src="assets/ia-chat.png" alt="IA Chat sur le firmware : OK pour parler, rotation pour défiler." loading="lazy" width="512" height="256"></div><div class="feature-bottom"><span>MICRO → GROQ → CHAT</span><a href="#experience" data-select-gallery="ia-chat" aria-label="Voir le chat IA">↗</a></div></article>
+        <article class="web-feature reveal"><div class="feature-top"><span class="feature-index">03 / NAVIGATEUR</span><span class="tiny-planet" aria-hidden="true">◎</span></div><h3>Le web.<br>En version poche.</h3><p>Ouvre une vraie page depuis l’application Windows. Navigue à la molette sur ton T-Embed, sélectionne les liens et écris avec le clavier du firmware.</p><div class="web-art" aria-hidden="true"><div class="web-address"><span>↗</span> explore.<span class="typing-caret"></span></div><div class="globe"><div></div><div></div><div></div><span></span></div><span class="satellite satellite-a"></span><span class="satellite satellite-b"></span></div><div class="feature-bottom"><span>PC + T-EMBED · MÊME WI-FI</span><a href="#experience" data-select-gallery="navigateur" aria-label="Voir le navigateur">↗</a></div></article>
+      </div>
+    </section>
+
+    <section id="experience" class="experience section-space" aria-labelledby="experience-title"><div class="wrap">
+      <div class="section-heading reveal"><p class="eyebrow">[ EN ACTION ]</p><div><h2 id="experience-title">Le firmware.<br><span class="muted">Sous tes yeux.</span></h2><p>Les captures viennent directement du firmware. Choisis un écran pour regarder de plus près.</p></div></div>
+      <div class="gallery reveal">
+        <div class="gallery-selector" role="tablist" aria-label="Captures du firmware" aria-orientation="vertical">
+          <button role="tab" id="tab-menu-navigateur" aria-controls="gallery-panel" aria-selected="true" data-gallery="menu-navigateur" class="selected"><span>01</span><strong>Un menu à ton image</strong><i>↗</i></button>
+          <button role="tab" id="tab-navigateur" aria-controls="gallery-panel" aria-selected="false" tabindex="-1" data-gallery="navigateur"><span>02</span><strong>Navigateur PC</strong><i>↗</i></button>
+          <button role="tab" id="tab-ia-chat" aria-controls="gallery-panel" aria-selected="false" tabindex="-1" data-gallery="ia-chat"><span>03</span><strong>IA Chat</strong><i>↗</i></button>
+          <button role="tab" id="tab-dualboot" aria-controls="gallery-panel" aria-selected="false" tabindex="-1" data-gallery="dualboot"><span>04</span><strong>Dual Boot</strong><i>↗</i></button>
+          <button role="tab" id="tab-parametres" aria-controls="gallery-panel" aria-selected="false" tabindex="-1" data-gallery="parametres"><span>05</span><strong>À toi les réglages</strong><i>↗</i></button>
+        </div>
+        <div class="gallery-view" id="gallery-panel" role="tabpanel" aria-labelledby="tab-menu-navigateur" tabindex="0"><div class="capture-chrome"><span class="live-dot"></span><span id="capture-label">MENU PRINCIPAL</span><button id="enlarge-capture" aria-label="Agrandir la capture">↗</button></div><button class="capture-button" id="capture-button" aria-label="Agrandir la capture du menu principal"><img id="gallery-image" src="assets/menu-navigateur.png" width="512" height="256" alt="Menu principal du firmware, avec Navigateur sélectionné." loading="lazy"></button><div class="capture-footer"><span id="capture-description">Des icônes personnalisées. L’essentiel à un cran de molette.</span><span>CAPTURE RÉELLE ↗</span></div></div>
+      </div>
+    </div></section>
+
+    <section class="controls-section wrap section-space" aria-labelledby="controls-title"><div class="controls-copy reveal"><p class="eyebrow">[ EN MAIN ]</p><h2 id="controls-title">Moins de boutons.<br><span class="muted">Plus d’instinct.</span></h2><p>Une molette, un clic, un retour. L’interface garde ce qui fait le plaisir du T-Embed : aller droit à l’essentiel.</p></div><div class="control-list reveal"><div><span class="control-icon">↻</span><h3>Tourner</h3><p>Parcourir les menus,<br>faire défiler le chat et les pages.</p><span class="control-code">ROT</span></div><div><span class="control-icon">●</span><h3>Confirmer</h3><p>Ouvrir une app,<br>valider, commencer à parler.</p><span class="control-code">OK</span></div><div><span class="control-icon">↶</span><h3>Revenir</h3><p>Retour à la page précédente.<br>Appui long pour quitter le navigateur.</p><span class="control-code">BACK</span></div></div></section>
+
+    <section id="questions" class="faq wrap section-space" aria-labelledby="faq-title"><div class="faq-title reveal"><p class="eyebrow">[ BON À SAVOIR ]</p><h2 id="faq-title">Avant de<br><span class="muted">te lancer.</span></h2></div><div class="faq-list reveal"><details><summary>C’est pour quel appareil ? <span>+</span></summary><p>Cette édition est développée et testée sur un LilyGo T-Embed CC1101 Plus, avec son écran 320 × 170 et sa molette. Le modèle 3D est une visualisation de l’appareil ; les captures montrent le firmware réel.</p></details><details><summary>Le navigateur fonctionne comment ? <span>+</span></summary><p>L’application Windows ouvre les pages avec Chrome ou Edge, puis transmet l’image au T-Embed. Le PC et le T-Embed doivent être connectés au même Wi-Fi. Tu peux contrôler la page depuis l’aperçu sur le PC ou avec la molette de l’appareil.</p></details><details><summary>De quoi le chat IA a-t-il besoin ? <span>+</span></summary><p>D’une connexion Wi-Fi et d’une clé API Groq configurée sur l’appareil. Le micro enregistre ta question et la réponse apparaît dans le chat. Tu peux démarrer et arrêter l’enregistrement avec OK.</p></details><details><summary>C’est une version officielle de Momentum ? <span>+</span></summary><p>Il s’agit d’une édition personnelle basée sur le port Momentum pour ESP32, avec nos ajouts Dualboot, IA et navigateur. Ce projet est indépendant des équipes officielles Momentum, Flipper Devices et LILYGO.</p></details></div></section>
+
+    <section class="community wrap reveal" aria-labelledby="community-title"><div class="community-top"><span class="eyebrow">[ LA SUITE S’ÉCRIT ENSEMBLE ]</span><svg viewBox="0 0 70 70" aria-hidden="true"><path d="M35 0v70M0 35h70M10 10l50 50M10 60l50-50"/></svg></div><h2 id="community-title">LES BONNES IDÉES<br>NE RESTENT PAS<br><span>DANS LA POCHE.</span></h2><div class="community-bottom"><p>Des nouvelles du firmware, des retours<br>et tes prochaines idées. On en parle sur Discord.</p><a class="button dark" href="https://discord.gg/cxar9AKsgW" target="_blank" rel="noopener">Rejoindre la communauté <span>↗</span></a></div></section>
+  </main>
+
+  <footer class="footer wrap"><a class="brand" href="#"><svg viewBox="0 0 36 30" aria-hidden="true"><path d="M0 30V0h7l11 17L29 0h7v30h-8V14L18 29 8 14v16Z"/></svg><span>momentum</span></a><p>ÉDITION T-EMBED · PROJET INDÉPENDANT</p><a href="https://github.com/Filip1x3/Momentum-Firmware-ESP32-Port" target="_blank" rel="noopener">Le port d’origine ↗</a><a href="#" class="back-top">Retour en haut ↑</a></footer>
+  <dialog id="capture-dialog" aria-label="Capture du firmware agrandie"><button id="close-capture" class="dialog-close" aria-label="Fermer la capture">Fermer ×</button><img id="dialog-image" src="assets/menu-navigateur.png" alt="Capture du firmware agrandie" width="512" height="256"><p id="dialog-caption">Menu principal</p></dialog>
+  <dialog id="flasher-dialog" class="flasher-dialog" aria-labelledby="flasher-title">
+    <button id="close-flasher" class="dialog-close" type="button">Fermer ×</button>
+    <p class="eyebrow">[ INSTALLATION USB ]</p>
+    <h2 id="flasher-title">Ton prochain<br><span class="muted">terrain de jeu.</span></h2>
+    <p class="flasher-intro">Momentum · Dualboot + IA · T-Embed CC1101 Plus</p>
+    <ol class="flash-steps" aria-label="Étapes d’installation"><li data-flash-step="1" aria-current="step"><span>01</span>Connecter</li><li data-flash-step="2"><span>02</span>Installer</li><li data-flash-step="3"><span>03</span>Carte SD</li></ol>
+    <div id="flash-browser-note" class="flash-note" hidden>Le flash USB nécessite Chrome ou Edge sur ordinateur. Ouvre ce site dans l’un de ces navigateurs pour connecter ton T-Embed.</div>
+    <div id="flash-setup">
+      <p class="flash-instructions">Branche ton T-Embed avec un câble USB de données. Ferme le moniteur série et les autres logiciels qui utilisent son port USB.</p>
+      <label class="flash-confirm"><input type="checkbox" id="flash-board-confirm"><span>J’utilise un <strong>LilyGo T-Embed CC1101 Plus</strong> (ESP32-S3, 16 Mo) et je souhaite remplacer son firmware.</span></label>
+      <p class="flash-small">Sauvegarde tes fichiers importants avant l’installation. Le programme écrit les cinq fichiers du profil dualboot, sans effacement global de la mémoire.</p>
+      <p id="flash-sd-availability" class="flash-small">Ressources SD : vérification de la disponibilité du pack…</p>
+      <div class="flash-actions"><button id="flash-connect" class="button primary" type="button" disabled>Connecter mon T-Embed <span>↗</span></button><button id="flash-install" class="button primary" type="button" disabled>Installer le firmware <span>↓</span></button></div>
+    </div>
+    <div class="flash-feedback"><p id="flash-status" role="status" aria-live="polite">Chargement du pack…</p><progress id="flash-progress" value="0" max="100" aria-label="Progression du flash"></progress><span id="flash-progress-text">0 %</span></div>
+    <section id="flash-sd-step" class="flash-sd" aria-labelledby="flash-sd-title" hidden>
+      <span class="eyebrow">[ DERNIÈRE ÉTAPE ]</span><h3 id="flash-sd-title">Prépare ta carte SD.</h3>
+      <p>Télécharge le pack de ressources nécessaire au firmware. Extrais le ZIP, puis copie les dossiers obtenus directement à la racine de ta carte microSD, sans ajouter de dossier « sdcard » autour.</p>
+      <button id="flash-download-sd" class="button primary" type="button" disabled>Télécharger sdcard.zip <span>↓</span></button>
+      <p id="flash-sd-note" class="flash-small">Vérification de la disponibilité du pack…</p>
+      <p class="flash-small">Pour le chat IA, configure ta propre clé Groq sur ta carte SD. Aucune clé personnelle n’est incluse dans le firmware ni dans ce pack SD.</p>
+    </section>
+    <details class="flash-log"><summary>Journal de l’installation</summary><pre id="flash-log-output"></pre></details>
+    <p class="flash-credit">Connexion USB locale avec <a href="https://github.com/espressif/esptool-js" target="_blank" rel="noopener">esptool-js</a>. Tes données USB ne sont pas envoyées à un serveur.</p>
+  </dialog>
+</body>
+</html>
+
