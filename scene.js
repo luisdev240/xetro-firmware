@@ -52,14 +52,14 @@ async function start() {
   room.dispose();
   pmrem.dispose();
 
-  scene.add(new THREE.HemisphereLight(0xdcebc4, 0x15200d, 2.0));
+  scene.add(new THREE.HemisphereLight(0xf0dfcf, 0x1a110c, 2.0));
   const key = new THREE.DirectionalLight(0xffffff, 4);
   key.position.set(-4, 7, 8);
   scene.add(key);
-  const rim = new THREE.DirectionalLight(0xb3fa65, 3.2);
+  const rim = new THREE.DirectionalLight(0xff9c55, 3.2);
   rim.position.set(5, -2, -1);
   scene.add(rim);
-  const fill = new THREE.DirectionalLight(0xc5d7e4, 2);
+  const fill = new THREE.DirectionalLight(0xded3c7, 2);
   fill.position.set(3, 2, 6);
   scene.add(fill);
 
@@ -67,12 +67,12 @@ async function start() {
   device.rotation.set(-.11, -.27, -.16);
   scene.add(device);
 
-  const shellMaterial = new THREE.MeshPhysicalMaterial({ color: 0x57604f, metalness: .32, roughness: .24,
+  const shellMaterial = new THREE.MeshPhysicalMaterial({ color: 0x62564b, metalness: .32, roughness: .24,
     transparent: true, opacity: .9, transmission: .12, thickness: .5, clearcoat: 1, clearcoatRoughness: .17 });
-  const dark = new THREE.MeshStandardMaterial({ color: 0x0b1009, metalness: .45, roughness: .34 });
-  const rubber = new THREE.MeshStandardMaterial({ color: 0x151b10, metalness: .12, roughness: .61 });
-  const metal = new THREE.MeshStandardMaterial({ color: 0x7f8972, metalness: .92, roughness: .26 });
-  const edgeMaterial = new THREE.LineBasicMaterial({ color: 0xc0c9a9, transparent: true, opacity: .32 });
+  const dark = new THREE.MeshStandardMaterial({ color: 0x0c0c0c, metalness: .45, roughness: .34 });
+  const rubber = new THREE.MeshStandardMaterial({ color: 0x1b1815, metalness: .12, roughness: .61 });
+  const metal = new THREE.MeshStandardMaterial({ color: 0x908476, metalness: .92, roughness: .26 });
+  const edgeMaterial = new THREE.LineBasicMaterial({ color: 0xd3b89d, transparent: true, opacity: .32 });
   const rear = extruded(7.45, 3.03, 1.27, .5, dark, -.35);
   device.add(rear);
   const shell = extruded(7.5, 3.06, 1.29, .67, shellMaterial, -.26);
@@ -82,7 +82,7 @@ async function start() {
   device.add(outline);
 
   // Circuit traces beneath the translucent front, built as native geometry.
-  const traceMaterial = new THREE.MeshStandardMaterial({ color: 0x536f38, metalness: .75, roughness: .37 });
+  const traceMaterial = new THREE.MeshStandardMaterial({ color: 0x8c5d37, metalness: .75, roughness: .37 });
   for (let i = 0; i < 9; i++) {
     const trace = new THREE.Mesh(new THREE.BoxGeometry(.016, .18 + i * .036, .012), traceMaterial);
     trace.position.set(-2.6 + i * .5, -1.16, .46);
@@ -96,7 +96,7 @@ async function start() {
   bezel.position.x = -1.02;
   device.add(bezel);
   const screenEdge = new THREE.LineSegments(new THREE.EdgesGeometry(bezel.geometry, 30),
-    new THREE.LineBasicMaterial({ color: 0x8b977c, transparent: true, opacity: .65 }));
+    new THREE.LineBasicMaterial({ color: 0xa18c78, transparent: true, opacity: .65 }));
   screenEdge.position.copy(bezel.position);
   device.add(screenEdge);
   const loader = new THREE.TextureLoader();
@@ -112,7 +112,7 @@ async function start() {
     }
     return textures.get(key);
   }
-  const screenMaterial = new THREE.MeshBasicMaterial({ map: await screenTexture('menu-navigateur'), color: 0xcfe4b6, toneMapped: false });
+  const screenMaterial = new THREE.MeshBasicMaterial({ map: await screenTexture('menu-navigateur'), color: 0xe8d4ba, toneMapped: false });
   const screen = new THREE.Mesh(new THREE.PlaneGeometry(3.87, 1.935), screenMaterial);
   screen.position.set(-1.02, .01, .565);
   device.add(screen);
@@ -121,7 +121,7 @@ async function start() {
   device.add(cylinder(1.12, .17, metal, dialX, 0, .5));
   device.add(cylinder(1.065, .2, dark, dialX, 0, .66));
   device.add(cylinder(.97, .24, rubber, dialX, 0, .79));
-  const ringMaterial = new THREE.MeshStandardMaterial({ color: 0x626f52, roughness: .3, metalness: .8 });
+  const ringMaterial = new THREE.MeshStandardMaterial({ color: 0x9b6d43, roughness: .3, metalness: .8 });
   for (const [radius, z] of [[1.025, .8], [.9, .93], [.49, .96], [.27, 1.005]]) {
     const ring = new THREE.Mesh(new THREE.TorusGeometry(radius, .023, 10, 80), ringMaterial);
     ring.position.set(dialX, 0, z);
@@ -143,7 +143,7 @@ async function start() {
   device.add(capMark);
 
   const ledGeometry = new THREE.SphereGeometry(.045, 12, 12);
-  const ledMaterial = new THREE.MeshStandardMaterial({ color: 0xc7fa63, emissive: 0xa7e644, emissiveIntensity: 1.6, roughness: .2 });
+  const ledMaterial = new THREE.MeshStandardMaterial({ color: 0xff8a2a, emissive: 0xff6500, emissiveIntensity: 1.6, roughness: .2 });
   for (let i = 0; i < 8; i++) {
     const a = i / 8 * Math.PI * 2 + .2;
     const led = new THREE.Mesh(ledGeometry, ledMaterial);
@@ -182,11 +182,11 @@ async function start() {
   let separation = 0;
   window.addEventListener('xetro:explode', event => { exploded = event.detail; });
   window.addEventListener('xetro:finish', event => {
-    shellMaterial.color.setHex(event.detail === 'carbon' ? 0x202820 : 0x57604f);
+    shellMaterial.color.setHex(event.detail === 'carbon' ? 0x242220 : 0x62564b);
     shellMaterial.roughness = event.detail === 'carbon' ? .42 : .24;
   });
   if (stage.dataset.modelFinish === 'carbon') {
-    shellMaterial.color.setHex(0x202820);
+    shellMaterial.color.setHex(0x242220);
     shellMaterial.roughness = .42;
   }
   let dragging = false;

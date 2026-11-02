@@ -148,7 +148,7 @@ document.querySelectorAll('[data-finish]').forEach(button => {
       item.setAttribute('aria-pressed', String(item === button)));
     const carbon = button.dataset.finish === 'carbon';
     stage.dataset.modelFinish = button.dataset.finish;
-    document.querySelector('.fallback-shell').style.background = carbon ? '#252d22' : '';
+    document.querySelector('.fallback-shell').style.background = carbon ? '#2d2824' : '';
     window.dispatchEvent(new CustomEvent('xetro:finish', { detail: button.dataset.finish }));
   });
 });
