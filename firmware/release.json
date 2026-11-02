@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "name": "Xetro — Dualboot + IA",
-  "version": "2.0.0-db1",
+  "version": "2.1.0-db1",
   "board": "LilyGo T-Embed CC1101 Plus",
   "chip": "ESP32-S3",
   "flashSize": "16MB",
@@ -23,7 +23,7 @@
     {
       "path": "xetro-dualboot-ia.bin",
       "size": 3934208,
-      "sha256": "dd63243e599e4342da5a7998005538b83f6011b8042b6041c9ea14429fc12ecf",
+      "sha256": "2c5b46e602a67a3ed1effdbd07d55633563dc9019013dec701263f7944a66c68",
       "offset": 65536
     },
     {
@@ -61,7 +61,7 @@
       "file": {
         "path": "xetro-dualboot-ia.bin",
         "size": 3934208,
-        "sha256": "dd63243e599e4342da5a7998005538b83f6011b8042b6041c9ea14429fc12ecf"
+        "sha256": "2c5b46e602a67a3ed1effdbd07d55633563dc9019013dec701263f7944a66c68"
       }
     },
     {
@@ -70,7 +70,7 @@
       "file": {
         "path": "xetro-dualboot-ia-en.bin",
         "size": 3934208,
-        "sha256": "e5be279375b7d68b2ca161e4e7b6b9a4909c70e1b80f3b5060c8daeabdd70f96"
+        "sha256": "a3d97a650198091778d6681ea3646a4175d468368ac935b3bba731f417c8339a"
       }
     },
     {
@@ -79,7 +79,7 @@
       "file": {
         "path": "xetro-dualboot-ia-es.bin",
         "size": 3934208,
-        "sha256": "ff3f57d39471aaf5b3771864d6c12ecf7835b47c90af2130f4646b241d14109c"
+        "sha256": "83349d897b6d52df30e7d58d681936e2a76a69375506c85b3c652a41d63f7c69"
       }
     },
     {
@@ -88,7 +88,7 @@
       "file": {
         "path": "xetro-dualboot-ia-it.bin",
         "size": 3934208,
-        "sha256": "4a87d58c6c59021cfccd2b3132e3e25f89344ea4703d3c713f2cb34c71959758"
+        "sha256": "c6841853fc588b43e95fe9f0b2ac33c738e4af397ff7d75a4aafb25fbbf70018"
       }
     },
     {
@@ -97,7 +97,7 @@
       "file": {
         "path": "xetro-dualboot-ia-pt.bin",
         "size": 3934208,
-        "sha256": "4e46cb10fc8921dbfab066782a8845d11a596dc07e2c88aa0dfab6eb908798c1"
+        "sha256": "d9003cd577bdcf34b204e08857eab35168e8f83979b866df2fe29f7c1fb04583"
       }
     },
     {
@@ -106,7 +106,7 @@
       "file": {
         "path": "xetro-dualboot-ia-zh.bin",
         "size": 3934208,
-        "sha256": "9156189de720a64210bc61c62a60a6931fa8d20b0a385bae5153c600ffe6237a"
+        "sha256": "68501a22be08678cf17424dc314fbd8a9fa63ee10aaa60e351a396cbfe87328c"
       }
     }
   ],
