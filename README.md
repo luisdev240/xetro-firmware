@@ -23,3 +23,7 @@ Applications : https://github.com/luisdev240/xetro-firmware/releases/tag/navigat
 ## Explorer Xetro
 
 Modèle 3D interactif avec vue éclatée et apparences minéral/carbone, galerie des captures, installation guidée, mise en page mobile et animations respectant la réduction des mouvements.
+
+## Langues du firmware
+
+Dans le flasheur, choisis français, anglais, espagnol, italien, portugais ou chinois simplifié avant la connexion USB. Le fichier de firmware correspondant est vérifié par SHA-256 avant écriture. La langue concerne les menus principaux, le navigateur et le chat IA. Bruce et les applications tierces gardent leur langue d’origine. Les six parcours ont été testés avec un flash simulé ; le flash et le fonctionnement des six variantes sur le matériel restent à vérifier.

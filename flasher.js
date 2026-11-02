@@ -6,6 +6,19 @@ const FILES = new Map([
   ['ota_data_initial.bin', 0xbf0000],
 ]);
 const PROTECTED = [[0x9000, 0x10000], [0xc12000, 0x1000000]];
+const LANGUAGES = new Map([
+  ['fr', 'xetro-dualboot-ia.bin'], ['en', 'xetro-dualboot-ia-en.bin'],
+  ['es', 'xetro-dualboot-ia-es.bin'], ['it', 'xetro-dualboot-ia-it.bin'],
+  ['pt', 'xetro-dualboot-ia-pt.bin'], ['zh', 'xetro-dualboot-ia-zh.bin'],
+]);
+
+export function selectReleaseLanguage(catalog, code) {
+  validateRelease(catalog);
+  const variant = catalog.languages.find(language => language.code === code);
+  if (!variant) throw new Error('Cette langue de firmware est indisponible.');
+  return validateRelease({ ...catalog, language: code, files: catalog.files.map(file =>
+    file.offset === 0x10000 ? { ...variant.file, offset: 0x10000 } : { ...file }) });
+}
 
 export function validateRelease(release) {
   if (release.schema !== 1 || release.chip !== 'ESP32-S3' || release.flashSize !== '16MB' ||
@@ -13,10 +26,32 @@ export function validateRelease(release) {
       release.groq?.embeddedKey !== false || release.files?.length !== 5) {
     throw new Error('Ce pack ne correspond pas au profil Dualboot + IA. Installation annulée.');
   }
+  if (release.defaultLanguage !== 'fr' || !Array.isArray(release.languages) || release.languages.length !== 6) {
+    throw new Error('Le catalogue des langues est invalide.');
+  }
+  const codes = new Set();
+  for (const variant of release.languages) {
+    if (!LANGUAGES.has(variant.code) || codes.has(variant.code) ||
+        variant.file?.path !== LANGUAGES.get(variant.code) ||
+        !Number.isSafeInteger(variant.file.size) || variant.file.size < 1 ||
+        variant.file.size > 0x5f0000 || !/^[a-f0-9]{64}$/.test(variant.file.sha256 || '')) {
+      throw new Error('Une version linguistique du firmware est invalide.');
+    }
+    codes.add(variant.code);
+  }
+  const language = release.language || release.defaultLanguage;
+  const selected = release.languages.find(item => item.code === language);
+  if (!selected || release.files.filter(file => file.offset === 0x10000).length !== 1) {
+    throw new Error('La langue sélectionnée ne correspond pas au firmware.');
+  }
   const seen = new Set();
   const ranges = [];
   for (const file of release.files) {
-    if (!FILES.has(file.path) || seen.has(file.path) || FILES.get(file.path) !== file.offset ||
+    const isApplication = file.offset === 0x10000;
+    const validFile = isApplication ? file.path === selected.file.path &&
+      file.size === selected.file.size && file.sha256 === selected.file.sha256 :
+      FILES.has(file.path) && FILES.get(file.path) === file.offset && file.offset !== 0x10000;
+    if (!validFile || seen.has(file.path) ||
         !Number.isSafeInteger(file.size) || file.size < 1 || !/^[a-f0-9]{64}$/.test(file.sha256)) {
       throw new Error('Le manifeste des fichiers est invalide.');
     }
@@ -70,6 +105,7 @@ export class Flasher {
     this.loader = this.transport = this.release = null;
     this.busy = false;
     this.installed = false;
+    this.catalog = null;
     this.dialog = document.querySelector('#flasher-dialog');
     this.connectButton = document.querySelector('#flash-connect');
     this.installButton = document.querySelector('#flash-install');
@@ -81,6 +117,8 @@ export class Flasher {
     this.log = document.querySelector('#flash-log-output');
     this.sdButton = document.querySelector('#flash-download-sd');
     this.sdNote = document.querySelector('#flash-sd-note');
+    this.languageSelect = document.querySelector('#flash-language');
+    this.languageSelect.addEventListener('change', () => this.chooseLanguage());
     document.querySelectorAll('[data-open-flasher]').forEach(button => button.addEventListener('click', () => this.open()));
     this.confirm.addEventListener('change', () => this.updateButtons());
     this.connectButton.addEventListener('click', () => this.connect());
@@ -104,6 +142,15 @@ export class Flasher {
     this.installButton.disabled = !this.loader || !this.confirm.checked || this.busy || this.installed;
     this.closeButton.disabled = this.busy;
     this.confirm.disabled = this.busy || this.installed;
+    this.languageSelect.disabled = this.busy || this.installed || Boolean(this.loader) || !this.catalog;
+  }
+
+  chooseLanguage() {
+    if (this.busy || this.installed || this.loader || !this.catalog) return;
+    this.release = selectReleaseLanguage(this.catalog, this.languageSelect.value);
+    document.querySelector('#flash-language-note').textContent =
+      `Firmware Xetro : ${this.languageSelect.selectedOptions[0].textContent}. Menus principaux, navigateur et chat IA. Bruce et les applications tierces gardent leur langue d’origine.`;
+    this.updateButtons();
   }
 
   setStep(step) {
@@ -127,7 +174,8 @@ export class Flasher {
     try {
       const response = await this.fetcher('./firmware/release.json', { cache: 'no-cache' });
       if (!response.ok) throw new Error('Le pack est indisponible. Réessaie plus tard.');
-      this.release = validateRelease(await response.json());
+      this.catalog = validateRelease(await response.json());
+      this.chooseLanguage();
       this.message(this.supported ? 'Prêt. Confirme le modèle, puis connecte ton T-Embed.' : 'Flash USB indisponible dans ce navigateur.');
       this.configureSd();
     } catch (error) {
@@ -198,6 +246,7 @@ export class Flasher {
       }
       this.message(reset ? 'Firmware écrit et vérifié. Le redémarrage a été demandé.' :
         'Firmware écrit et vérifié. Appuie sur RST pour redémarrer ton T-Embed.');
+      this.status.textContent += ` Langue : ${this.languageSelect.selectedOptions[0].textContent}.`;
       this.setStep(3);
       document.querySelector('#flash-sd-step').hidden = false;
       document.querySelector('#flash-setup').hidden = true;

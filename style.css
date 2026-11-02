@@ -1,4 +1,5 @@
 .flasher-dialog{width:min(760px,94vw);max-height:92dvh;padding:40px 36px 25px;background:#141a11;border-color:#52623e}
+.flash-language-choice{border:1px solid #465736;background:#182112;border-radius:4px;padding:16px;margin:20px 0}.flash-language-choice>label{display:block;font-size:12px;margin-bottom:10px;color:#c7ddae}.flash-language-choice select{display:block;width:100%;font:14px var(--font);background:#10160c;color:#f1f3e9;border:1px solid #6d8453;border-radius:3px;padding:12px;min-height:46px}.flash-language-choice select:focus-visible{outline:2px solid var(--acid);outline-offset:3px}.flash-language-choice select:disabled{opacity:.6}.flasher-dialog .flash-language-choice .flash-small{margin-bottom:0}
 .flasher-dialog h2{font-size:37px;margin:18px 0 13px;letter-spacing:-1.8px}
 .flasher-dialog p.flasher-intro{font:11px var(--mono);color:#a3b28e;margin:0 0 26px;line-height:1.8}
 .flash-steps{display:flex;list-style:none;padding:0;margin:0 0 25px;border-top:1px solid #3d4b30;border-bottom:1px solid #3d4b30;gap:12px}

@@ -32,7 +32,7 @@
         <h1 id="hero-title">LE MÊME<br>APPAREIL.<br><span>UN AUTRE<br>MONDE.</span><svg class="heading-star" viewBox="0 0 70 70" aria-hidden="true"><path d="M35 0v70M0 35h70M10 10l50 50M10 60l50-50"/></svg></h1>
         <p class="hero-description">Deux firmwares. Le web dans ta poche.<br>L’IA au bout de la voix.<br>Ton T-Embed a encore beaucoup à dire.</p>
         <div class="hero-actions"><button class="button primary" type="button" data-open-flasher>Flasher le firmware <span aria-hidden="true">↗</span></button><a class="text-link" href="#experience">Explorer les écrans <span aria-hidden="true">↓</span></a></div>
-        <p class="hero-meta"><span>ESP32-S3</span><span>16 MO</span><span>320 × 170 PX</span></p>
+        <p class="hero-meta"><span>ESP32-S3</span><span>16 MO</span><span>320 × 170 PX</span><span>6 LANGUES</span></p>
       </div>
       <div class="hero-visual">
         <div class="model-grid" aria-hidden="true"></div><div class="orbit orbit-one" aria-hidden="true"></div><div class="orbit orbit-two" aria-hidden="true"></div>
@@ -79,7 +79,7 @@
 
     <section id="installation" class="install-section wrap section-space" aria-labelledby="installation-title"><div class="install-panel reveal">
       <div class="install-heading"><p class="eyebrow">03 / C’EST À TOI DE JOUER</p><h2 id="installation-title">Prêt pour<br>l’autre côté<span>↗</span></h2><p>Le dernier firmware Xetro Dualboot + IA.<br>Directement depuis ton navigateur.</p><button class="button primary" type="button" data-open-flasher>Installer Xetro <span aria-hidden="true">↗</span></button><span class="install-browser">CHROME OU EDGE · ORDINATEUR · USB</span></div>
-      <ol class="install-guide"><li><span>01</span><div><h3>Branche ton T-Embed.</h3><p>Utilise un câble USB de données et ferme les logiciels qui utilisent le port série.</p></div></li><li><span>02</span><div><h3>Lance le flash.</h3><p>Confirme ton modèle T-Embed CC1101 Plus. Le flasheur vérifie les fichiers et installe le profil dualboot.</p></div></li><li><span>03</span><div><h3>Emporte le nécessaire.</h3><p>À la fin : le pack SD et, au choix, l’APK Android ou l’EXE Windows pour le navigateur. Tout au même endroit.</p></div></li></ol>
+      <ol class="install-guide"><li><span>01</span><div><h3>Branche ton T-Embed.</h3><p>Utilise un câble USB de données et ferme les logiciels qui utilisent le port série.</p></div></li><li><span>02</span><div><h3>Lance le flash.</h3><p>Choisis la langue et confirme ton T-Embed CC1101 Plus. Le flasheur vérifie les fichiers et installe le profil dualboot.</p></div></li><li><span>03</span><div><h3>Emporte le nécessaire.</h3><p>À la fin : le pack SD et, au choix, l’APK Android ou l’EXE Windows pour le navigateur. Tout au même endroit.</p></div></li></ol>
     </div></section>
 
     <section id="questions" class="faq wrap section-space" aria-labelledby="faq-title"><div class="faq-title reveal"><p class="eyebrow">04 / LES DERNIÈRES QUESTIONS</p><h2 id="faq-title">On te dit<br><span class="muted">tout.</span></h2><a class="text-link" href="https://discord.gg/cxar9AKsgW" target="_blank" rel="noopener">Une autre question ? Discord <span>↗</span></a></div><div class="faq-list reveal">
@@ -88,6 +88,7 @@
       <details><summary>Comment préparer la carte SD ? <span>+</span></summary><p>Après le flash, télécharge sdcard.zip. Extrais le ZIP et copie les dossiers obtenus à la racine de la microSD, sans dossier « sdcard » supplémentaire. Configure ta connexion Wi-Fi et ta propre clé Groq pour le chat IA.</p></details>
       <details><summary>Le chat IA a besoin de quoi ? <span>+</span></summary><p>D’une connexion Wi-Fi et de ta propre clé API Groq configurée sur la carte SD. OK démarre l’enregistrement ; un second appui l’arrête. La transcription et la réponse apparaissent à l’écran. Aucune clé personnelle n’est fournie.</p></details>
       <details><summary>Je peux encore démarrer Bruce ? <span>+</span></summary><p>Oui. Le pack installe les fichiers du profil Dualboot + IA avec Bruce. Le menu Dual Boot te permet de lancer Bruce depuis ton T-Embed.</p></details>
+      <details><summary>Quelles langues sont disponibles ? <span>+</span></summary><p>Choisis français, anglais, espagnol, italien, portugais ou chinois simplifié dans le flasheur, avant de connecter le T-Embed. Cette langue s’applique aux menus principaux, au navigateur et au chat IA, ainsi qu’à sa transcription et à ses réponses. Bruce et les applications tierces gardent leur langue d’origine.</p></details>
       <details><summary>C’est un firmware officiel ? <span>+</span></summary><p>Xetro est une édition personnelle issue d’un port open source pour ESP32. Le projet est indépendant de Flipper Devices et de LILYGO. Le port d’origine est crédité en bas de page.</p></details>
     </div></section>
 
@@ -104,6 +105,7 @@
     <div id="flash-browser-note" class="flash-note" hidden>Le flash USB nécessite Chrome ou Edge sur ordinateur. Ouvre ce site dans l’un de ces navigateurs pour connecter ton T-Embed.</div>
     <div id="flash-setup">
       <p class="flash-instructions">Branche ton T-Embed avec un câble USB de données. Ferme le moniteur série et les autres logiciels qui utilisent son port USB.</p>
+      <div class="flash-language-choice"><label for="flash-language">Langue du firmware</label><select id="flash-language" aria-describedby="flash-language-note" disabled><option value="fr" lang="fr">Français</option><option value="en" lang="en">English</option><option value="es" lang="es">Español</option><option value="it" lang="it">Italiano</option><option value="pt" lang="pt">Português</option><option value="zh" lang="zh-Hans">简体中文 — chinois simplifié</option></select><p id="flash-language-note" class="flash-small">Choisis la langue des menus principaux, du navigateur et du chat IA avant de connecter le T-Embed.</p></div>
       <label class="flash-confirm"><input type="checkbox" id="flash-board-confirm"><span>J’utilise un <strong>LilyGo T-Embed CC1101 Plus</strong> (ESP32-S3, 16 Mo) et je souhaite remplacer son firmware.</span></label>
       <p class="flash-small">Sauvegarde tes fichiers importants avant l’installation. Le programme écrit les cinq fichiers du profil dualboot, sans effacement global de la mémoire.</p>
       <p id="flash-sd-availability" class="flash-small">Ressources SD : vérification de la disponibilité du pack…</p>
