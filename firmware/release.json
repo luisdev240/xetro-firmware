@@ -22,9 +22,9 @@
     },
     {
       "path": "xetro-dualboot-ia.bin",
-      "offset": 65536,
-      "size": 3698784,
-      "sha256": "cef2669d1f725e921f3e52f76a371d396f4a272d4331c77b3a47aceb512c467a"
+      "size": 3934208,
+      "sha256": "dd63243e599e4342da5a7998005538b83f6011b8042b6041c9ea14429fc12ecf",
+      "offset": 65536
     },
     {
       "path": "bruce-dualboot.bin",
@@ -52,5 +52,63 @@
   "companion": {
     "project": "bruce_mntm_db1",
     "version": "1.16-db1"
-  }
+  },
+  "defaultLanguage": "fr",
+  "languages": [
+    {
+      "code": "fr",
+      "label": "Français",
+      "file": {
+        "path": "xetro-dualboot-ia.bin",
+        "size": 3934208,
+        "sha256": "dd63243e599e4342da5a7998005538b83f6011b8042b6041c9ea14429fc12ecf"
+      }
+    },
+    {
+      "code": "en",
+      "label": "English",
+      "file": {
+        "path": "xetro-dualboot-ia-en.bin",
+        "size": 3934208,
+        "sha256": "e5be279375b7d68b2ca161e4e7b6b9a4909c70e1b80f3b5060c8daeabdd70f96"
+      }
+    },
+    {
+      "code": "es",
+      "label": "Español",
+      "file": {
+        "path": "xetro-dualboot-ia-es.bin",
+        "size": 3934208,
+        "sha256": "ff3f57d39471aaf5b3771864d6c12ecf7835b47c90af2130f4646b241d14109c"
+      }
+    },
+    {
+      "code": "it",
+      "label": "Italiano",
+      "file": {
+        "path": "xetro-dualboot-ia-it.bin",
+        "size": 3934208,
+        "sha256": "4a87d58c6c59021cfccd2b3132e3e25f89344ea4703d3c713f2cb34c71959758"
+      }
+    },
+    {
+      "code": "pt",
+      "label": "Português",
+      "file": {
+        "path": "xetro-dualboot-ia-pt.bin",
+        "size": 3934208,
+        "sha256": "4e46cb10fc8921dbfab066782a8845d11a596dc07e2c88aa0dfab6eb908798c1"
+      }
+    },
+    {
+      "code": "zh",
+      "label": "简体中文",
+      "file": {
+        "path": "xetro-dualboot-ia-zh.bin",
+        "size": 3934208,
+        "sha256": "9156189de720a64210bc61c62a60a6931fa8d20b0a385bae5153c600ffe6237a"
+      }
+    }
+  ],
+  "localizationScope": "core-ui"
 }
