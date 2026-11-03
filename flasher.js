@@ -1,5 +1,11 @@
 import md5 from './assets/vendor/md5.mjs';
 
+// Public preview: no USB chooser, firmware download or flash until launch.
+export const FLASHING_ENABLED = false;
+function requireFlashingEnabled() {
+  if (!FLASHING_ENABLED) throw new Error('Le flash sera disponible prochainement.');
+}
+
 const FILES = new Map([
   ['bootloader.bin', 0], ['partition-table.bin', 0x8000],
   ['xetro-dualboot-ia.bin', 0x10000], ['bruce-dualboot.bin', 0x600000],
@@ -71,6 +77,7 @@ export function validateRelease(release) {
 }
 
 export async function fetchFirmware(release, fetcher = fetch) {
+  requireFlashingEnabled();
   validateRelease(release);
   return Promise.all(release.files.map(async file => {
     const response = await fetcher(`./firmware/${file.path}`, { cache: 'no-cache' });
@@ -85,6 +92,7 @@ export async function fetchFirmware(release, fetcher = fetch) {
 }
 
 export async function writeRelease(loader, release, fileArray, onProgress) {
+  requireFlashingEnabled();
   validateRelease(release);
   if (loader.chip?.CHIP_NAME !== 'ESP32-S3') throw new Error('Appareil incompatible : ESP32-S3 requis.');
   if (await loader.detectFlashSize() !== '16MB') throw new Error('Appareil incompatible : mémoire de 16 Mo requise.');
@@ -99,6 +107,7 @@ export async function writeRelease(loader, release, fileArray, onProgress) {
 export class Flasher {
   constructor({ serial = navigator.serial, loadTools = () => import('./assets/vendor/esptool.js'),
                 fetcher = (...args) => fetch(...args) } = {}) {
+    requireFlashingEnabled();
     this.serial = serial;
     this.loadTools = loadTools;
     this.fetcher = fetcher;
@@ -168,6 +177,7 @@ export class Flasher {
   }
 
   async open() {
+    requireFlashingEnabled();
     this.dialog.showModal();
     window.dispatchEvent(new CustomEvent('xetro:flasher', { detail: true }));
     if (this.release) return;
@@ -191,6 +201,7 @@ export class Flasher {
   }
 
   async connect() {
+    requireFlashingEnabled();
     if (this.connectButton.disabled) return;
     this.busy = true;
     this.updateButtons();
@@ -223,6 +234,7 @@ export class Flasher {
   }
 
   async install() {
+    requireFlashingEnabled();
     if (this.installButton.disabled) return;
     this.busy = true;
     this.updateButtons();
@@ -313,4 +325,4 @@ export class Flasher {
   }
 }
 
-export const flasher = document.querySelector('#flasher-dialog') ? new Flasher() : null;
+export const flasher = FLASHING_ENABLED && document.querySelector('#flasher-dialog') ? new Flasher() : null;

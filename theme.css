@@ -36,3 +36,6 @@ dialog{width:min(850px,94vw);max-height:92dvh;overflow:auto;background:#1a1715;c
 @media(max-width:600px){.model-tools{gap:5px}.model-tools>button{padding:8px;font-size:8px}.model-finishes button{width:32px;height:40px;padding:7px}}
 
 .model-note a{color:inherit;text-decoration:underline;text-underline-offset:3px}.model-finishes [data-finish="mineral"] span{background:linear-gradient(135deg,#e5e8eb88,#e5e8eb22);border:1px solid #b9c3ca}.model-finishes [data-finish="carbon"] span{background:#20242a}
+
+/* Preview release: installation is visibly unavailable. */
+[data-flash-soon]{cursor:default!important;gap:16px!important}[data-flash-soon]:hover{transform:none!important}.soon-badge{font-family:var(--mono);font-size:.7em!important;letter-spacing:.08em;text-transform:uppercase;border:1px solid currentColor;border-radius:3px;padding:5px 7px;line-height:1!important}.install-heading [data-flash-soon]{justify-content:space-between}

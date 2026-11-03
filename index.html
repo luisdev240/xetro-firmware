@@ -4,7 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#0c0c0c">
   <title>Xetro — Le même appareil. Un autre monde.</title>
-  <meta name="description" content="Xetro pour T-Embed CC1101 Plus. Deux firmwares, le web dans ta poche et l’IA au bout de la voix. Explore le modèle 3D et installe le firmware depuis ton navigateur.">
+  <meta name="description" content="Xetro pour T-Embed CC1101 Plus. Deux firmwares, le web dans ta poche et l’IA au bout de la voix. Explore le modèle 3D et découvre le firmware. Le flash arrive bientôt.">
   <meta property="og:title" content="Xetro — Le même appareil. Un autre monde.">
   <meta property="og:description" content="Dualboot + IA + navigateur. Donne une autre dimension à ton T-Embed.">
   <meta property="og:url" content="https://xetro-tembed-luis.purplepig8192.chatgpt.site">
@@ -12,7 +12,7 @@
   <link rel="preload" href="assets/vendor/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="theme.css"><link rel="stylesheet" href="style.css">
   <script type="importmap">{"imports":{"three":"./assets/vendor/three.module.js"}}</script>
-  <script src="app.js" defer></script><script type="module" src="scene.js"></script><script type="module" src="flasher.js"></script>
+  <script src="app.js" defer></script><script type="module" src="scene.js"></script>
 </head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
@@ -21,7 +21,7 @@
     <div class="header-inner wrap">
       <a class="brand" href="#" aria-label="Xetro, accueil"><svg viewBox="0 0 36 30" aria-hidden="true"><path d="M2 2h8l8 9 8-9h8L22 15l12 13h-8l-8-9-8 9H2l12-13Z M31 0h4v4h-4Z"/></svg><span>xetro<span class="brand-dot">↗</span></span></a>
       <nav id="navigation" aria-label="Navigation principale"><a href="#firmware">01 / Découvrir</a><a href="#experience">02 / Explorer</a><a href="#installation">03 / Installer</a><a href="#questions">Questions</a></nav>
-      <button class="nav-cta" type="button" data-open-flasher>Installer Xetro <span aria-hidden="true">↗</span></button>
+      <button class="nav-cta" type="button" disabled data-flash-soon aria-label="Flasher — Soon, bientôt disponible" title="Bientôt disponible">Flasher <span class="soon-badge">Soon</span></button>
       <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" aria-label="Ouvrir le menu"><span></span><span></span></button>
     </div>
   </header>
@@ -31,7 +31,7 @@
       <div class="hero-copy">
         <h1 id="hero-title">LE MÊME<br>APPAREIL.<br><span>UN AUTRE<br>MONDE.</span><svg class="heading-star" viewBox="0 0 70 70" aria-hidden="true"><path d="M35 0v70M0 35h70M10 10l50 50M10 60l50-50"/></svg></h1>
         <p class="hero-description">Deux firmwares. Le web dans ta poche.<br>L’IA au bout de la voix.<br>Ton T-Embed a encore beaucoup à dire.</p>
-        <div class="hero-actions"><button class="button primary" type="button" data-open-flasher>Flasher le firmware <span aria-hidden="true">↗</span></button><a class="text-link" href="#experience">Explorer les écrans <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-actions"><button class="button primary" type="button" disabled data-flash-soon aria-label="Flasher — Soon, bientôt disponible" title="Bientôt disponible">Flasher <span class="soon-badge">Soon</span></button><a class="text-link" href="#experience">Explorer les écrans <span aria-hidden="true">↓</span></a></div>
         <p class="hero-meta"><span>ESP32-S3</span><span>16 MO</span><span>320 × 170 PX</span><span>6 LANGUES</span></p>
       </div>
       <div class="hero-visual">
@@ -78,7 +78,7 @@
     </section>
 
     <section id="installation" class="install-section wrap section-space" aria-labelledby="installation-title"><div class="install-panel reveal">
-      <div class="install-heading"><p class="eyebrow">03 / C’EST À TOI DE JOUER</p><h2 id="installation-title">Prêt pour<br>l’autre côté<span>↗</span></h2><p>Le dernier firmware Xetro Dualboot + IA.<br>Directement depuis ton navigateur.</p><button class="button primary" type="button" data-open-flasher>Installer Xetro <span aria-hidden="true">↗</span></button><span class="install-browser">CHROME OU EDGE · ORDINATEUR · USB</span></div>
+      <div class="install-heading"><p class="eyebrow">03 / BIENTÔT DISPONIBLE</p><h2 id="installation-title">Prêt pour<br>l’autre côté<span>↗</span></h2><p>L’installation du firmware arrive bientôt.<br>En attendant, explore le site et son modèle 3D.</p><button class="button primary" type="button" disabled data-flash-soon aria-label="Flasher — Soon, bientôt disponible" title="Bientôt disponible">Flasher <span class="soon-badge">Soon</span></button><span class="install-browser">APERÇU DU SITE · FLASH BIENTÔT DISPONIBLE</span></div>
       <ol class="install-guide"><li><span>01</span><div><h3>Branche ton T-Embed.</h3><p>Utilise un câble USB de données et ferme les logiciels qui utilisent le port série.</p></div></li><li><span>02</span><div><h3>Lance le flash.</h3><p>Choisis la langue et confirme ton T-Embed CC1101 Plus. Le flasheur vérifie les fichiers et installe le profil dualboot.</p></div></li><li><span>03</span><div><h3>Emporte le nécessaire.</h3><p>À la fin : le pack SD et, au choix, l’APK Android ou l’EXE Windows pour le navigateur. Tout au même endroit.</p></div></li></ol>
     </div></section>
 
@@ -88,7 +88,7 @@
       <details><summary>Comment préparer la carte SD ? <span>+</span></summary><p>Après le flash, télécharge sdcard.zip. Extrais le ZIP et copie les dossiers obtenus à la racine de la microSD, sans dossier « sdcard » supplémentaire. Configure ta connexion Wi-Fi et ta propre clé Groq pour le chat IA.</p></details>
       <details><summary>Le chat IA a besoin de quoi ? <span>+</span></summary><p>D’une connexion Wi-Fi et de ta propre clé API Groq configurée sur la carte SD. OK démarre l’enregistrement ; un second appui l’arrête. La transcription et la réponse apparaissent à l’écran. Aucune clé personnelle n’est fournie.</p></details>
       <details><summary>Je peux encore démarrer Bruce ? <span>+</span></summary><p>Oui. Le pack installe les fichiers du profil Dualboot + IA avec Bruce. Le menu Dual Boot te permet de lancer Bruce depuis ton T-Embed.</p></details>
-      <details><summary>Quelles langues sont disponibles ? <span>+</span></summary><p>Choisis français, anglais, espagnol, italien, portugais ou chinois simplifié dans le flasheur, avant de connecter le T-Embed. Cette langue s’applique aux menus principaux, au navigateur et au chat IA, ainsi qu’à sa transcription et à ses réponses. Bruce et les applications tierces gardent leur langue d’origine.</p></details>
+      <details><summary>Quelles langues sont disponibles ? <span>+</span></summary><p>À l’ouverture du flash, tu pourras choisir français, anglais, espagnol, italien, portugais ou chinois simplifié, avant de connecter le T-Embed. Cette langue s’applique aux menus principaux, au navigateur et au chat IA, ainsi qu’à sa transcription et à ses réponses. Bruce et les applications tierces gardent leur langue d’origine.</p></details>
       <details><summary>C’est un firmware officiel ? <span>+</span></summary><p>Xetro est une édition personnelle issue d’un port open source pour ESP32. Le projet est indépendant de Flipper Devices et de LILYGO. Le port d’origine est crédité en bas de page.</p></details>
     </div></section>
 
@@ -96,7 +96,7 @@
   </main>
   <footer class="footer wrap"><div class="footer-top"><a class="brand" href="#"><svg viewBox="0 0 36 30" aria-hidden="true"><path d="M2 2h8l8 9 8-9h8L22 15l12 13h-8l-8-9-8 9H2l12-13Z M31 0h4v4h-4Z"/></svg><span>xetro</span></a><p>LE MÊME APPAREIL. UN AUTRE MONDE.</p><a href="#" class="back-top">Retour en haut ↑</a></div><div class="footer-bottom"><span>ÉDITION INDÉPENDANTE / T-EMBED CC1101 PLUS</span><a href="https://github.com/luisdev240/xetro-firmware" target="_blank" rel="noopener">GitHub ↗</a><a href="https://github.com/Filip1x3/Momentum-Firmware-ESP32-Port" target="_blank" rel="noopener">Le port d’origine ↗</a><span>CONÇU POUR EXPLORER.</span></div></footer>
   <dialog id="capture-dialog" aria-label="Capture du firmware agrandie"><button id="close-capture" class="dialog-close" aria-label="Fermer la capture">Fermer ×</button><img id="dialog-image" src="assets/menu-navigateur.png" alt="Capture du firmware agrandie" width="512" height="256"><p id="dialog-caption">Menu principal</p></dialog>
-  <dialog id="flasher-dialog" class="flasher-dialog" aria-labelledby="flasher-title">
+  <dialog inert id="flasher-dialog" class="flasher-dialog" aria-labelledby="flasher-title">
     <button id="close-flasher" class="dialog-close" type="button">Fermer ×</button>
     <p class="eyebrow">[ INSTALLATION USB ]</p>
     <h2 id="flasher-title">Ton prochain<br><span class="muted">terrain de jeu.</span></h2>
