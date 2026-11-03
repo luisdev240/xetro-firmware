@@ -154,7 +154,13 @@ document.querySelectorAll('[data-finish]').forEach(button => {
 });
 window.addEventListener('xetro:model-unavailable', () => {
   explodeButton.disabled = true;
+  document.querySelector('#rear-view').disabled = true;
   explodeButton.title = 'La vue éclatée nécessite WebGL.';
+});
+window.addEventListener('xetro:model-ready', () => {
+  explodeButton.disabled = false;
+  document.querySelector('#rear-view').disabled = false;
+  explodeButton.removeAttribute('title');
 });
 
 const readingProgress = document.querySelector('.reading-progress');

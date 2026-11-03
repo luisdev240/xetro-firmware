@@ -41,10 +41,10 @@
         <div class="model-ghost" aria-hidden="true">X</div>
         <div id="device-stage" class="device-stage">
           <div class="device-fallback" aria-hidden="true"><div class="fallback-shell"><div class="fallback-screen"><img src="assets/menu-navigateur.png" alt=""></div><div class="fallback-dial"><span></span></div></div></div>
-          <canvas id="device-canvas" aria-label="Modèle 3D du T-Embed. Fais glisser pour le tourner."></canvas>
+          <canvas id="device-canvas" tabindex="0" aria-label="Modèle 3D du T-Embed. Glisse ou utilise les flèches pour tourner ; touche Début pour réinitialiser."></canvas>
         </div>
         <div class="model-caption"><span class="drag-hint">↔ Glisse pour tourner</span><button id="reset-view" type="button">Réinitialiser <span aria-hidden="true">↺</span></button></div>
-        <div class="model-tools"><button id="explode-view" aria-pressed="false" type="button"><span aria-hidden="true">◈</span> Vue éclatée</button><div class="model-finishes" role="group" aria-label="Apparence du modèle 3D"><button data-finish="mineral" aria-pressed="true" aria-label="Modèle minéral"><span></span></button><button data-finish="carbon" aria-pressed="false" aria-label="Modèle carbone"><span></span></button></div></div>
+        <div class="model-tools"><button id="explode-view" aria-pressed="false" type="button"><span aria-hidden="true">◈</span> Vue éclatée</button><button id="rear-view" aria-pressed="false" type="button">Voir le dos</button><div class="model-finishes" role="group" aria-label="Apparence du modèle 3D"><button data-finish="mineral" aria-pressed="true" aria-label="Modèle minéral"><span></span></button><button data-finish="carbon" aria-pressed="false" aria-label="Modèle carbone"><span></span></button></div></div>
         <div class="screen-switcher" aria-label="Écran du modèle 3D"><button class="active" data-model-screen="menu-navigateur" aria-pressed="true">Menu</button><button data-model-screen="navigateur" aria-pressed="false">Web</button><button data-model-screen="ia-chat" aria-pressed="false">IA</button><button data-model-screen="dualboot" aria-pressed="false">Dualboot</button></div>
         <p class="model-note">MODÈLE ILLUSTRATIF 3D · CAPTURES RÉELLES DU FIRMWARE</p>
       </div>

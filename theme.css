@@ -30,3 +30,7 @@ dialog{width:min(850px,94vw);max-height:92dvh;overflow:auto;background:#1a1715;c
 .browser-art{background:#231c17;border-color:#755033;box-shadow:5px 7px 0 #080808}.browser-art>div{border-color:#755033}.browser-art>div i{background:#c3814b}.browser-art>div>span{color:#bca48f}.browser-art>b,.browser-cursor{color:var(--acid)}
 .community .eyebrow,.community-content p{color:#3e230e}.community-top{border-color:#53301355}.community-top svg{stroke:#3e230e}
 .capture-button img{filter:sepia(.8) saturate(.55)}
+
+/* Model inspection controls remain available on narrow screens. */
+.model-tools{gap:8px}.model-tools>button{white-space:nowrap}#rear-view{margin-right:auto}.model-finishes{flex-shrink:0}#device-canvas:focus-visible{outline:1px solid var(--acid);outline-offset:-5px;border-radius:16px}
+@media(max-width:600px){.model-tools{gap:5px}.model-tools>button{padding:8px;font-size:8px}.model-finishes button{width:32px;height:40px;padding:7px}}
