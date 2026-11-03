@@ -34,3 +34,5 @@ dialog{width:min(850px,94vw);max-height:92dvh;overflow:auto;background:#1a1715;c
 /* Model inspection controls remain available on narrow screens. */
 .model-tools{gap:8px}.model-tools>button{white-space:nowrap}#rear-view{margin-right:auto}.model-finishes{flex-shrink:0}#device-canvas:focus-visible{outline:1px solid var(--acid);outline-offset:-5px;border-radius:16px}
 @media(max-width:600px){.model-tools{gap:5px}.model-tools>button{padding:8px;font-size:8px}.model-finishes button{width:32px;height:40px;padding:7px}}
+
+.model-note a{color:inherit;text-decoration:underline;text-underline-offset:3px}.model-finishes [data-finish="mineral"] span{background:linear-gradient(135deg,#e5e8eb88,#e5e8eb22);border:1px solid #b9c3ca}.model-finishes [data-finish="carbon"] span{background:#20242a}
